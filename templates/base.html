@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+    {% block title %}首页_宏利の博客{% endblock title %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/bitbug_favicon.ico' %}" type="image/x-icon"/>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+    <link href="{% static 'css/m.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.easyfader.min.js' %}"></script>
+    <script src="{% static 'js/scrollReveal.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
+    {% block topfiles %}{% endblock topfiles %}
+
+</head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <nav class="nav" id="topnav">
+            <h1 class="logo"><a href="index.html">个人博客</a></h1>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="recordlist.html">文章列表</a>
+                <ul class="sub-nav">
+                    <li><a href="list.html">Python</a></li>
+                    <li><a href="list.html">python Web</a></li>
+                    <li><a href="list.html">爬虫</a></li>
+                    <li><a href="list.html">人工智能</a></li>
+                    <li><a href="list.html">JS实例索引</a></li>
+                </ul>
+            </li>
+            <li><a href="courselist.html">教程文档</a></li>
+            <li><a href="photo.html">我的相册</a></li>
+            <li><a href="time.html">时间轴</a></li>
+            <li><a href="gbook.html">留言</a></li>
+            <li><a href="about.html">关于我</a></li>
+        </nav>
+    </div>
+    {% if user.is_authenticated %}
+        <li class="login_bt" style="position:absolute;right:60px;top:28px;color: #C1EDF2">
+            欢迎您：<em>{{ user.username }}</em>
+            <span>|</span>
+            <a href="/user/loginout/" style="color: #C1EDF2;">退出</a>
+        </li>
+    {% else %}
+        <a href="{% url 'user:login' %}" id="login" target="_blank">登录</a>
+        <a href="{% url 'user:register' %}" id="register" target="_blank">注册</a>
+    {% endif %}
+</header>
+{% block body %}{% endblock body %}
+<footer id="footer">
+    <p>Design by <a href="#">宏利の博客</a> <a href="#">京ICP备19037798号</a></p>
+    <p>e-mail : honlicc@163.com</p>
+
+</footer>
+<a href="#" class="cd-top">Top</a>
+{% block bottomfiles %}{% endblock bottomfiles %}

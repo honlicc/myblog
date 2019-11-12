@@ -1,0 +1,105 @@
+.main {
+    display: flex;
+    margin-top: 5%;
+    padding: 1%;
+    border-top: #bfbfbf 1px solid;
+
+}
+
+.leftsidebar {
+    width: 12%;
+    border-right: #bfbfbf 1px solid;
+    transition: 0.6s all;
+    overflow-y: scroll;
+}
+
+.leftsidebar-c {
+    margin-left: -230px;
+}
+
+.chapter {
+    margin-left: 10px;
+    padding: 1px 6px;
+    text-decoration: none;
+    color: #364149;
+    height: 33px;
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 36px;
+    display: block;
+    transition: 0.6s all;
+}
+
+.chapter-text {
+    padding-left: 45px;
+    font-size: 14px;
+}
+
+.chapter:hover {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn {
+    margin: 0px 10px;
+    font-size: 25px;
+    text-decoration: none;
+    color: #ccc;
+    font-family: FontAwesome;
+    cursor: pointer;
+}
+
+.btn:before {
+    content: "\f00d";
+}
+
+.btnc:before {
+    content: '\f0c9';
+}
+
+.main-center {
+    width: 90%;
+    height: 100%;
+}
+
+.book-mian {
+    margin: 2px auto;
+    padding: 10px 40px;
+    border: 1px solid #eee;
+    width: 90%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.title {
+    margin: 15px 0px;
+}
+
+.book-mian h1 {
+    font-size: 22px;
+}
+
+.book-mian h2 {
+    font-size: 16px;
+}
+
+.book-mian pre {
+    background: #f7f7f7;
+    padding-top: 15px;
+    height: 35px;
+
+}
+
+.book-mian code {
+    margin-left: 35px;
+}
+
+.book-mian p img {
+    padding-top: 15px;
+    width: 50%;
+}
+
+.book-mian ul li {
+    list-style: disc;
+    margin-left: 30px;
+}
