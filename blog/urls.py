@@ -16,8 +16,11 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+
 urlpatterns = [
     url(r'^', include('home.urls', namespace='home')),
     url(r'^user/', include('user.urls', namespace='user')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]

@@ -69,21 +69,21 @@ $(document).ready(function () {
         }
     });
 
-    //设置固定关注我们
-
-    if ($('#follow-us')) {
-        var followUsPosition = $('#follow-us').offset().top;
-        window.onscroll = function () {
-            var nowPosition = document.documentElement.scrollTop;
-            if (nowPosition - followUsPosition > 0) {
-                setTimeout(function () {
-                    $('#follow-us').attr('class', 'guanzhu gd');
-                }, 150);
-            } else {
-                $('#follow-us').attr('class', 'guanzhu');
-            }
-        };
-    }
+    // //设置固定关注我们
+    //
+    // if ($('#follow-us')) {
+    //     var followUsPosition = $('#follow-us').offset().top;
+    //     window.onscroll = function () {
+    //         var nowPosition = document.documentElement.scrollTop;
+    //         if (nowPosition - followUsPosition > 0) {
+    //             setTimeout(function () {
+    //                 $('#follow-us').attr('class', 'guanzhu gd');
+    //             }, 150);
+    //         } else {
+    //             $('#follow-us').attr('class', 'guanzhu');
+    //         }
+    //     };
+    // }
 
 
     //回到顶部

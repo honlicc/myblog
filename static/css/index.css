@@ -245,7 +245,7 @@ h1.t_nav { border-bottom: #bfbfbf 1px solid; font-size: 14px; font-weight: norma
 .shang_payselect img { float: left }
 
 .classification input{ display:inline-block;margin-left: 15px;}
-#login{color: #E5F2F2;display: inline-block;position: absolute;top:30px;right:220px;}
+#login{color: #E5F2F2;display: inline-block;position: absolute;top:35px;right:220px;}
 #login:hover{color:#fff;}
-#register{color: #E5F2F2;display: inline-block;position: absolute;top:30px;right:170px;}
+#register{color: #E5F2F2;display: inline-block;position: absolute;top:35px;right:170px;}
 #register:hover{color:#fff;}

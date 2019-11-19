@@ -11,151 +11,23 @@
     <div class="main">
         <!-- 主体 -->
         <div class="leftsidebar">
+            <p>{{ tables.first.tag }}</p>
             <ul>
+                {% for table in tables %}
+                    <a class="chapter chapter-title" href="">{{ forloop.counter }}.{{ table.name }}
+                        {% for blog in table.blogs %}
+                            <a class="chapter chapter-text" href="{% url 'home:content' blog.id %}">{{ forloop.counter }}.{{ blog.title }}</a>
+                        {% endfor %}
+                    </a>
+                {% endfor %}
                 <li>
-                    <p>Django教程</p>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
                 </li>
-
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-
-                <li>
-                    <a class="chapter chapter-title" href="">1.入门</a>
-                    <a class="chapter chapter-text" href="">1.1环境搭建</a>
-                    <a class="chapter chapter-text" href="">1.2创建项目</a>
-                    <a class="chapter chapter-text" href="">1.3设计模型</a>
-                </li>
-
-
             </ul>
-
         </div>
         <a class="btn"></a>
 
-
         <div class="book-mian">
-            <h1 class="title">欢迎学习django课程软件框架</h1>
-
-            <h2 class="title">问题1:什么是软件框架？</h2>
-
-
-            <p class="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                举个简单的例子，对于一个公司来说，公司中有各个职能部门，每个部门各司其职，通过部门之间的配合来完成工作，这些部门就形成了一个公司的组织架构。
-                从某种意义上来说，公司就是一种框架。那么对应到软件设计上来说，软件框架是由其中的各个模块组成的，每个模块负责特定的功能，模块与模块之间相互协作来完成软件开发。
-                一个公司，它是针对某一市场而成立的，而软件框架的设计，也是针对某一类软件问题而设计的，其目的主要是提高软件开发效率。
-                MVC简介</p>
-
-            <pre><code>sudo pip3 install virtualenvwrapper</code></pre>
-
-            <p class="title"><img src="/static/images/banner01.jpg"></p>
-
-
-            <ul class="ul">
-                <li>1.管理界面本地化</li>
-                <li>2.创建管理员</li>
-                <li>3.注册模型类</li>
-                <li>4.自定义管理页面</li>
-            </ul>
-
-            <ul class="ul">
-                <li>1.管理界面本地化</li>
-                <li>2.创建管理员</li>
-                <li>3.注册模型类</li>
-                <li>4.自定义管理页面</li>
-            </ul>
-
-            <p class="title"><img src="/static/images/banner01.jpg"></p>
-            <ul class="ul">
-                <li>1.管理界面本地化</li>
-                <li>2.创建管理员</li>
-                <li>3.注册模型类</li>
-                <li>4.自定义管理页面</li>
-            </ul>
+            <p class="title">{{ blog.detail|safe }}</p>
         </div>
     </div>
 {% endblock body %}

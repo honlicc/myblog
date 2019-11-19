@@ -43,6 +43,8 @@ INSTALLED_APPS = (
     'home',
     'photo',
     'user',
+    'ckeditor',
+    'ckeditor_uploader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -142,3 +144,34 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 
 LOGIN_URL = '/user/login'
+
+
+
+# 配置文件存储类
+DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDSStorage'
+
+# 配置fdfs客户端配置文件路径
+FDFS_CLIENT_CONF = './utils/fdfs/client.conf'
+
+FDFS_URL = 'http://192.168.83.128:8888/'
+
+# 富文本编辑器ckeditor配置
+CKEDITOR_CONFIGS = {
+    'default':{
+        'toolbar':'full', # 完整工具条
+        'height': 800, # 编辑高度
+        'width': 1800, # 编辑宽度
+    },
+}
+CKEDITOR_UPLOAD_PATH = ''   # 上传图片保存路径,使用了fastDFS,设置为''
+
+
+
+
+# 富文本编辑器
+TINYMCE_DEFAULT_CONFIG = {
+'theme': 'advanced',
+'width': 1500,
+'height': 1000,
+}
+

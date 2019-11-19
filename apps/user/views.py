@@ -6,7 +6,7 @@ from django.http import JsonResponse, HttpResponse
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from itsdangerous import SignatureExpired
 import re
-from user.models import User
+from user.models import User, UserInfo
 from blog.settings import SECRET_KEY
 from celery_tasks.tasks import send_register_active_email
 
@@ -137,3 +137,13 @@ class LoginOutView(View):
     def get(self, request):
         logout(request)
         return redirect(reverse('home:index'))
+
+
+# /user/about
+class AboutView(View):
+    def get(self, request):
+        nickname = '宏利'
+        # 获取用户信息,返回查询集
+        user = UserInfo.objects.filter(nickname=nickname).first()
+    
+        return render(request, 'about.html', {"user": user})

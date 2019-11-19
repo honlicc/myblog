@@ -3,8 +3,10 @@
 {% block title %}宏利の博客{% endblock title %}
 {% block topfiles %}
 	<link rel="stylesheet" href="{% static 'css/comments.css' %}">
+	<link rel="stylesheet" href="{% static 'css/release.css' %}">
 
 	<script src="{% static 'js/wangEditor.js' %}"></script>
+	<script src="{% static 'js/release.js' %}"></script>
 
 	<!--[if lt IE 9]>
 	<script src="{% static 'js/modernizr.js' %}"></script>
@@ -17,31 +19,55 @@
 			<p class="n1">表发博客</p>
 		</h1>
 		<div class="infosbox">
-			<form action="#" method="post">
+                {% csrf_token %}
 				<br>
-				<p>
-					<input class="comment_input" id="author" maxlength="50" name="author" required="required" size="25" tabindex="1"
-					 type="text">
-					<label for="author">文章标题</label>
-				</p>
-				<br>
-				<p class="classification">
-					<input name="list" type="radio" value="1">个人博客
-					<input name="list" type="radio" value="2">公开博客
-					<input name="list" type="radio" value="3">其他博客
-				</p>
 
 				<br>
+				<p class="classification">
+					<input name="list" type="radio" value="1" id="blog">博客
+					<input name="list" type="radio" value="2" id="course">教程
+				</p>
+				<br>
+
+                <p>
+                    <select name="" class="tag" id="tag">
+                        <option value="0">---请选择---</option>
+                        {% for tag in tags %}
+                        <option value="{{ tag.id }}">{{ tag.name }}</option>
+                        {% endfor %}
+                    </select>
+					<label for="author" class="tag">标签</label>
+
+
+
+
+                    <select name="" class="table" id="table">
+
+                        <option value="0" id="opt">---请选择---</option>
+
+                    </select>
+					<label for="author" class="title" id="title">目录</label>
+
+                    <input class="comment_input" id="author" maxlength="50" name="author" required="required" size="25" tabindex="1"
+					 type="text">
+					<label for="author">文章标题</label>
+
+				</p>
+                <br>
 
 				<div id="editor" style="margin-left: 12px;margin-right: 12px"></div>
 				<br>
+                　　<p>
+                &nbsp;&nbsp;&nbsp;<input type="file" id="test-image-file" name="test" accept="image/gif, image/jpeg, image/png, image/jpg">
+                　　</p>
+                   <p id="test-file-info"></p>
 				<p>
+                    <br>
+
 					<input id="id_article" name="article" type="hidden" value="1">
-					<input name="submit" type="submit" id="submit" tabindex="5" value="提交" class="button" />
+					<button type="button" id="btn" name="button">提交</button>
 				</p>
 				<br>
-			</form>
-
 		</div>
 		<!--release end-->
 		<div class="sidebar">
@@ -79,5 +105,13 @@
 		var editor = new E('#editor')
 		// 或者 var editor = new E( document.getElementById('editor') )
 		editor.create()
+
+        $('#blog').click(function () {
+            $('.tag,.table').hide()
+        })
+
+        $('#course').click(function () {
+            $('.tag,.table').show()
+        })
 	</script>
 {% endblock bottomfiles %}

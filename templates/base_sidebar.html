@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+    <div class="sidebar">
+        <div class="tuijian">
+            <h2 class="hometitle">推荐文章</h2>
+            <ul class="sidenews">
+                {% for blog in blog_tj %}
+
+                    <li><i><img src="{{ blog.image.url }}"></i>
+                        {% if blog.table == None %}
+                            <p><a href="{% url 'home:info' blog.id %}">{{ blog.title }}</a></p>
+                        {% else %}
+                            <p><a href="{% url 'home:content' blog.id %}">{{ blog.title }}</a></p>
+                        {% endif %}
+                        <span>{{ blog.create_time }}</span>
+                    </li>
+
+
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="tuijian">
+            <h2 class="hometitle">点击排行</h2>
+
+            <ul class="sidenews">
+                {% for blog in blog_read %}
+                    <li><i><img src="{{ blog.image.url }}"></i>
+                        <p><a href="{% url 'home:info' blog.id %}">{{ blog.title }}</a></p>
+                        <span>{{ blog.create_time }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="links">
+            <h2 class="hometitle">友情链接</h2>
+            <ul>
+                <li><a href="https://www.baidu.com/" target="_blank">百度一下</a></li>
+                <li><a href="https://sutune.me/2018/08/05/httprunner/" target="_blank">HttpRunnser测试框架</a></li>
+                <li><a href="#" target="_blank">欢迎加入~联系方式请见底部邮箱</a></li>
+            </ul>
+        </div>
+        <div class="guanzhu" id="follow-us">
+            <h2 class="hometitle">关注我 么哒！</h2>
+            <ul>
+                <li class="sina"><a href="#" target="_blank"><span>微信公众号</span>XXX</a></li>
+                <li class="tencent"><a href="#" target="_blank"><span>微信咨询</span>XXX</a></li>
+                <li class="qq"><a href="#" target="_blank"><span>QQ号</span>XXXXXX</a></li>
+                <li class="email"><a href="#" target="_blank"><span>邮箱帐号</span>www.honlicc@163.com</a></li>
+                <li class="wxgzh"><a href="#" target="_blank"><span>咨询电话</span>xxxxxxxxxxx</a></li>
+            </ul>
+        </div>
+
+    </div>
+{% endblock sidebar %}

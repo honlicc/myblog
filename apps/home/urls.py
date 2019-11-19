@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from home.views import HomeView
+from home.views import HomeView,ReleaseView,InfoView,RecordListView,CourseListView,ContentView
 
 
 urlpatterns = [
     url(r'^index/', HomeView.as_view(),name='index'),
+    url(r'^release/', ReleaseView.as_view(),name='release'),
+    url(r'^info/(?P<blog_id>\d+$)', InfoView.as_view(),name='info'),
+    url(r'^recordlist/', RecordListView.as_view(),name='recordlist'),
+    url(r'^courselist/', CourseListView.as_view(),name='courselist'),
+    url(r'^content/(?P<blog_id>\d+$)', ContentView.as_view(),name='content'),
 ]
