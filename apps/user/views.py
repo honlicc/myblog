@@ -108,8 +108,8 @@ class LoginView(View):
                 login(request, user)
 
                 # 获取登录后所需要跳转的页面
-                nest_url = request.GET.get('next', reverse("home:index"))
-                response = redirect(nest_url)
+                next_url = request.GET.get('next', reverse("home:index"))
+                response = redirect(next_url)
 
                 response.set_cookie('username', username, max_age=3600 * 24)
 

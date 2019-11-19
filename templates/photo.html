@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block title %}宏利の博客{% endblock title %}
 
 {% block body %}
@@ -11,67 +12,85 @@
 
     <div class="share">
       <ul>
-        <li>
-          <div class="shareli"><a href="#" target="_blank"> <i><img src="/static/images/toppic01.jpg"></i>
-              <h2><b>python中打开TXT文件报错!</b></h2>
-              <span>喜欢 | 190</span>
-            </a></div>
-        </li>
-          <li>
-          <div class="shareli"><a href="#" target="_blank"> <i><img src="/static/images/toppic01.jpg"></i>
-              <h2><b>python中打开TXT文件报错!</b></h2>
-              <span>喜欢 | 190</span>
-            </a></div>
-        </li>
-        <li>
-          <div class="shareli"><a href="#" target="_blank"> <i><img src="/static/images/toppic02.jpg"></i>
-              <h2><b>Python基础学习总结（一）</b></h2>
-              <span>喜欢 | 190</span>
-            </a></div>
-        </li>
-        <li>
-          <div class="shareli"><a href="#" target="_blank"> <i><img src="/static/images/banner01.jpg"></i>
-              <h2><b>Sublime text3作为Python的IDE不能正常使用input和raw_input</b></h2>
-              <span>喜欢 | 190</span>
-            </a> </div>
-        </li>
-        <li>
-          <div class="shareli"><a href="#" target="_blank"> <i><img src="/static/images/a.jpg"></i>
-              <h2><b>python学习网址以及笔记</b></h2>
-              <span>喜欢 | 190</span>
-            </a> </div>
-        </li>
-        <li>
-          <div class="shareli"><a href="#" target="_blank"> <i><img src="/static/images/b.jpg"></i>
-              <h2><b>linux升级py3,安装pip,svn</b></h2>
-              <span>喜欢 | 190</span>
-            </a> </div>
-        </li>
-        <li>
-          <div class="shareli"><a href="#" target="_blank"> <i><img src="/static/images/banner02.jpg"></i>
-              <h2><b>Python基础概念_2_基础概念</b></h2>
-              <span>喜欢 | 190</span>
-            </a> </div>
-        </li>
-        <li>
-          <div class="shareli"><a href="#" target="_blank"> <i><img src="/static/images/c.jpg"></i>
-              <h2><b>python环境安装和在eclipse中插件的使用!</b></h2>
-              <span>喜欢 | 190</span>
-            </a> </div>
-        </li>
-        <li>
-          <div class="shareli"><a href="#" target="_blank"> <i><img src="/static/images/banner02.jpg"></i>
-              <h2><b>python初步实现word2vec</b></h2>
-              <span>喜欢 | 190</span>
-            </a> </div>
-        </li>
+        {% for photo in photos %}
+            <li>
+              <div class="shareli"><a href="#" target="_blank"> <i><img src="{{ photo.photo.url }}"></i>
+                  <h2><b>{{ photo.name }}</b></h2>
+                  <span>喜欢 | {{ photo.read }}</span>
+                </a> </div>
+            </li>
+        {% endfor %}
       </ul>
     </div>
+{#    {% if order_page.has_previous_page %}#}
+{#    <div class="pagelist"><a title="Total record">&nbsp;<b>上一页</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;<a href="#">2</a>&nbsp;<a#}
+{#        href="#">下一页</a>&nbsp;<a href="#">尾页</a></div>#}
+{#     {% endif %}#}
+        <div class="pagelist" title="Total record">
+                    {% if order_page.has_previous_page %}
+					<a href="{% url 'photo:photo' order_page.previous_page_number %}"><上一页</a>
+                    {% endif %}
+                        {% for pindex in pages %}
+                            {% if pindex == order_page.number %}
+                                <a href="{% url 'photo:photo' pindex %}" class="active">{{ pindex }}</a>
+                            {% else %}
+					            <a href="{% url 'photo:photo' pindex %}">{{ pindex }}</a>
+                            {% endif %}
+                        {% endfor %}
 
-    <div class="pagelist"><a title="Total record">&nbsp;<b>上一页</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;<a href="#">2</a>&nbsp;<a
-        href="#">下一页</a>&nbsp;<a href="#">尾页</a></div>
+                    {% if order_page.has_next_page %}
+					<a href="{% url 'photo:photo' order_page.next_page_number %}">下一页></a>
+                    {% endif %}
+				</div>
 
 
   </div>
 {% endblock body %}
-  
+{% block bottomfiles %}
+<script src="{% static 'js/j' %}"></script>
+<script type="text/javascript">
+
+ $(function(){
+    $("#img1").click(function(){
+      var _this = $(this).children('li>img');//将当前的pimg元素作为_this传入函数
+        console.log(_this)
+      imgShow("#outerdiv", "#innerdiv", "#bigimg", _this);
+    });
+  });
+  function imgShow(outerdiv, innerdiv, bigimg, _this){
+    var src = _this.attr("src");//获取当前点击的pimg元素中的src属性
+    $(bigimg).attr("src", src);//设置#bigimg元素的src属性
+      /*获取当前点击图片的真实大小，并显示弹出层及大图*/
+    $("<img/>").attr("src", src).load(function(){
+      var windowW = $(window).width();//获取当前窗口宽度
+      var windowH = $(window).height();//获取当前窗口高度
+      var realWidth = this.width;//获取图片真实宽度
+      var realHeight = this.height;//获取图片真实高度
+      var imgWidth, imgHeight;
+      var scale = 0.8;//缩放尺寸，当图片真实宽度和高度大于窗口宽度和高度时进行缩放
+      if(realHeight>windowH*scale) {//判断图片高度
+        imgHeight = windowH*scale;//如大于窗口高度，图片高度进行缩放
+        imgWidth = imgHeight/realHeight*realWidth;//等比例缩放宽度
+        if(imgWidth>windowW*scale) {//如宽度扔大于窗口宽度
+          imgWidth = windowW*scale;//再对宽度进行缩放
+        }
+      } else if(realWidth>windowW*scale) {//如图片高度合适，判断图片宽度
+        imgWidth = windowW*scale;//如大于窗口宽度，图片宽度进行缩放
+              imgHeight = imgWidth/realWidth*realHeight;//等比例缩放高度
+      } else {//如果图片真实高度和宽度都符合要求，高宽不变
+        imgWidth = realWidth;
+        imgHeight = realHeight;
+      }
+          $(bigimg).css("width",imgWidth);//以最终的宽度对图片缩放
+      var w = (windowW-imgWidth)/2;//计算图片与窗口左边距
+      var h = (windowH-imgHeight)/2;//计算图片与窗口上边距
+      $(innerdiv).css({"top":h, "left":w});//设置#innerdiv的top和left属性
+      $(outerdiv).fadeIn("fast");//淡入显示#outerdiv及.pimg
+    });
+    $(outerdiv).click(function(){//再次点击淡出消失弹出层
+      $(this).fadeOut("fast");
+    });
+  }
+
+</script>
+{% endblock bottomfiles %}

@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0008_auto_20191115_2214'),
+        ('home', '0001_initial'),
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='comments',
-            name='detail',
-            field=models.TextField(verbose_name='详情', blank=True),
+        migrations.AddField(
+            model_name='blog',
+            name='recommend',
+            field=models.IntegerField(verbose_name='推荐', default=0),
         ),
     ]

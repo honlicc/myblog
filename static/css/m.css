@@ -1,4 +1,8 @@
 @charset "utf-8";
+@media screen and (min-width: 1024px){
+     #comment{width: 650px;height: 290px;vertical-align:top;outline:none;padding: 10px }
+    .timebox:before{left: 220px;}
+}
 @media screen and (min-width: 1024px) and (max-width: 1199px) {
     header { width: 100%; margin: auto; }
     .nav { width: 90% }
@@ -11,6 +15,8 @@
     .gd { width: 230px }
     .container { width: 90%; margin: 20px auto; }
     .share ul li i { }
+
+
 }
 @media screen and (min-width: 960px) and (max-width: 1023px) {
     #login{display: none}
@@ -28,6 +34,7 @@
     .container { width: 90%; margin: 20px auto; }
     .share ul li i { }
     .timebox li:hover a { padding: 0 30px }
+    .timebox:before{left: 220px;}
 }
 @media screen and (min-width: 768px) and (max-width: 959px) {
     #login{display: none}
@@ -50,11 +57,12 @@
     h1.t_nav span { display: none }
     .timebox li { font-size: 15px }
     .timebox li span { margin-right: 30px }
-    .timebox:before { left: 100px; }
+    .timebox:before { left: 176px; }
     .timebox li a:after { left: -26px }
     .timebox li:hover a { padding: 0 30px }
     .infosbox { width: 100% }
     .pagebg {margin-top: 50px;}
+
 }
  @media only screen and (min-width: 480px) and (max-width: 767px) {
     #login{display: none}
@@ -109,7 +117,8 @@
     .bigpic img { height: auto }
     .blogs .blogtext { width: 100%; }
     .bloginfo ul li { background-image: none }
-    .bloginfo .author, .bloginfo .lmname { display: none }
+    .bloginfo .author, .bloginfo .lmname { display: block }
+    .bloginfo .lmname{ display: none }
     .bplist li:nth-child(2) { margin: 0 0 0 2px }
     .sidebar { display: none }
     .news_infos { width: 100% }
@@ -128,4 +137,6 @@
     .pagebg {margin-top: 50px;}
     .diggit{ float:none; margin-left: auto;}
     .dasbox{ display:none}
+    #commentform{width: 295px}
+     #comment{width: 280px;height: 70px;vertical-align:top;outline:none;padding: 5px}
 }

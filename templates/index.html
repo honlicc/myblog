@@ -1,17 +1,24 @@
 {% extends 'base_sidebar.html' %}
 {% load staticfiles %}
-
+{% block topfiles %}
+    <script src="{% static 'js/common.js' %}"></script>
+{% endblock topfiles %}
 {% block body %}
-
-
     <!--banner begin-->
     <div class="picsbox">
         <div class="banner">
             <div id="banner" class="fader">
                 {% for banner in banners %}
-                    <li class="slide"><a href="{% url 'home:info' banner.type.id %}" target="_blank"><img
+                    {% if banner.type.type.id == 1 %}
+                        <li class="slide"><a href="{% url 'home:content' banner.type.id %}" target="_blank"><img
                             src="{{ banner.image.url }}"><span class="imginfo">{{ banner.type.title }}</span></a>
-                    </li>
+                        </li>
+                    {% else %}
+                        <li class="slide"><a href="{% url 'home:info' banner.type.id %}" target="_blank"><img
+                            src="{{ banner.image.url }}"><span class="imginfo">{{ banner.type.title }}</span></a>
+                        </li>
+                    {% endif %}
+
                 {% endfor %}
                 <div class="fader_controls">
                     <div class="page prev" data-target="prev">&lsaquo;</div>
@@ -29,15 +36,12 @@
                         {% else %}
                     <li><a href="{% url 'home:content' blog.id %}" target="_blank">
                     <i><img src="{{ blog.tag.image.url }}"></i>
-
                 {% endif %}
-
             <h2>{{ blog.title }}</h2>
             <span>{{ blog.tag }}</span>
             </a>
             </li>
             {% endfor %}
-
         </div>
     </div>
     <div class="blank"></div>
@@ -51,11 +55,15 @@
                 {% else %}
                     <h3 class="blogtitle"><a href="{% url 'home:content' blog.id %}"
                                              target="_blank">{{ blog.title }} </a></h3>
-
                 {% endif %}
 
-                <span class="blogpic"><a href="{% url 'home:info' blog.id %}" title=""><img
-                        src="{{ blog.image.url }}" alt=""></a></span>
+                {% if blog.type.id == 1 %}
+                    <span class="blogpic"><a href="{% url 'home:info' blog.id %}" title=""><img
+                            src="{{ blog.tag.image.url }}" alt=""></a></span>
+                {% else %}
+                    <span class="blogpic"><a href="{% url 'home:info' blog.id %}" title=""><img
+                            src="{{ blog.iamge.url }}" alt=""></a></span>
+                {% endif %}
                 <p class="blogtext">{{ blog.detail|striptags|safe }}</p>
                 <div class="bloginfo">
                     <ul>

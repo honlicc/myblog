@@ -7,18 +7,18 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0015_auto_20191116_1907'),
+        ('home', '0002_blog_recommend'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='blog',
-            name='image',
-            field=models.ImageField(verbose_name='图片', null=True, upload_to='banner'),
+            name='table',
+            field=models.ForeignKey(verbose_name='目录', blank=True, null=True, to='home.BlogTable'),
         ),
         migrations.AlterField(
             model_name='blog',
-            name='table',
-            field=models.ForeignKey(verbose_name='目录', null=True, to='home.BlogTable'),
+            name='tag',
+            field=models.ForeignKey(verbose_name='标签', blank=True, null=True, to='home.BlogTag'),
         ),
     ]

@@ -14,14 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
-from django.contrib import admin
-
+from photo.views import PhotoView
 
 urlpatterns = [
-    url(r'^', include('home.urls', namespace='home')),
-    url(r'^user/', include('user.urls', namespace='user')),
-    url(r'^photo/', include('photo.urls', namespace='photo')),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+   url(r'(?P<page>\d+$)', PhotoView.as_view(), name='photo'),
 ]

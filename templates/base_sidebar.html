@@ -5,16 +5,19 @@
         <div class="tuijian">
             <h2 class="hometitle">推荐文章</h2>
             <ul class="sidenews">
-                {% for blog in blog_tj %}
-
-                    <li><i><img src="{{ blog.image.url }}"></i>
-                        {% if blog.table == None %}
-                            <p><a href="{% url 'home:info' blog.id %}">{{ blog.title }}</a></p>
-                        {% else %}
-                            <p><a href="{% url 'home:content' blog.id %}">{{ blog.title }}</a></p>
-                        {% endif %}
-                        <span>{{ blog.create_time }}</span>
-                    </li>
+                {% for blog in blog_recommend %}
+                    {% if blog.type.id == 1 %}
+                        <li><i><img src="{{ blog.tag.image.url }}"></i>
+                    {% else %}
+                        <li><i><img src="{{ blog.image.url }}"></i>
+                    {% endif %}
+                {% if blog.table == None %}
+                    <p><a href="{% url 'home:info' blog.id %}">{{ blog.title }}</a></p>
+                {% else %}
+                    <p><a href="{% url 'home:content' blog.id %}">{{ blog.title }}</a></p>
+                {% endif %}
+                <span>{{ blog.create_time }}</span>
+                </li>
 
 
                 {% endfor %}
@@ -25,7 +28,13 @@
 
             <ul class="sidenews">
                 {% for blog in blog_read %}
-                    <li><i><img src="{{ blog.image.url }}"></i>
+
+                    {% if blog.type.id == 1 %}
+                         <li><i><img src="{{ blog.tag.image.url }}"></i>
+                    {% else %}
+                         <li><i><img src="{{ blog.image.url }}"></i>
+                    {% endif %}
+
                         <p><a href="{% url 'home:info' blog.id %}">{{ blog.title }}</a></p>
                         <span>{{ blog.create_time }}</span>
                     </li>

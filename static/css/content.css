@@ -102,3 +102,14 @@
     list-style: disc;
     margin-left: 30px;
 }
+
+
+@media only screen and (max-width: 479px) {
+    article {width:100%}
+    .leftsidebar{width:50%;font-size: 13px;}
+    .chapter{margin-left:0px;padding: 1px 0px;font-size: 13px;}
+    .chapter-text{padding-left:10px;font-size: 13px;}
+    .btn{margin:0px 5px;font-size:20px}
+    .book-mian{padding:8px 10px}
+    .leftsidebar-c {margin-left: -172px}
+}

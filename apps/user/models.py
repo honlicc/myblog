@@ -1,7 +1,7 @@
 from django.db import models
 from db.base_model import BaseModel
 from django.contrib.auth.models import AbstractUser
-from tinymce.models import HTMLField
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 '''
 AbstractUser:继承django自带的user类并进行扩展
@@ -23,7 +23,7 @@ class UserInfo(BaseModel):
     info = models.CharField(max_length=200, verbose_name='信息')
     face = models.ImageField(upload_to='user', verbose_name='头像')
     job = models.CharField(max_length=20, verbose_name='工作')
-    desc = HTMLField(blank=True, verbose_name='介绍')
+    desc = RichTextUploadingField(default='', verbose_name='介绍')
 
 
     class Meta:

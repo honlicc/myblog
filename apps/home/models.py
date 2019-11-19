@@ -1,7 +1,5 @@
 from django.db import models
 from db.base_model import BaseModel
-from tinymce.models import HTMLField
-from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
 
@@ -71,13 +69,15 @@ class Blog(BaseModel):
         (2, '草稿'),
     )
     user = models.ForeignKey('user.UserInfo', verbose_name='作者')
-    tag = models.ForeignKey('BlogTag', verbose_name='标签')
-    table = models.ForeignKey('BlogTable', null=True, blank=True, verbose_name='目录')
+    type = models.ForeignKey('BlogType', verbose_name='类型')
+    tag = models.ForeignKey('BlogTag', null=True,blank=True,verbose_name='标签')
+    table = models.ForeignKey('BlogTable', null=True,blank=True, verbose_name='目录')
     title = models.CharField(max_length=20, verbose_name='标题')
-    image = models.ImageField(upload_to='banner', null=True, blank=True, verbose_name='图片')
+    image = models.ImageField(upload_to='banner',  blank=True, verbose_name='图片')
     read=models.IntegerField(default=0,verbose_name='阅读数')
     # 富文本类型:带有格式的文本
     detail = RichTextUploadingField(default='', verbose_name='详情')
+    recommend = models.IntegerField(default=0,verbose_name='推荐')
     status = models.SmallIntegerField(default=1, choices=status_choices, verbose_name='状态')
 
     class Meta:
@@ -105,4 +105,4 @@ class Comments(BaseModel):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.blog
+        return self.blog.title
