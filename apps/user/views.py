@@ -144,6 +144,11 @@ class AboutView(View):
     def get(self, request):
         nickname = '宏利'
         # 获取用户信息,返回查询集
-        user = UserInfo.objects.filter(nickname=nickname).first()
+        userinfo = UserInfo.objects.filter(nickname=nickname).first()
+        user=User.objects.filter(id=userinfo.user.id).first()
+        content={
+            "userinfo": userinfo,
+            "user": user,
+        }
     
-        return render(request, 'about.html', {"user": user})
+        return render(request, 'about.html', content)

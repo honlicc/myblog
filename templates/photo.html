@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %}宏利の博客{% endblock title %}
-
+{% block topfiles %}<style>.active{background-color: #888888;}</style>
+{% endblock topfiles %}
 {% block body %}
   <div class="pagebg photo"></div>
   <div class="container">
@@ -9,10 +10,9 @@
       <p class="n1">我的相册</p>
     </h1>
 
-
     <div class="share">
       <ul>
-        {% for photo in photos %}
+        {% for photo in photo_page %}
             <li>
               <div class="shareli"><a href="#" target="_blank"> <i><img src="{{ photo.photo.url }}"></i>
                   <h2><b>{{ photo.name }}</b></h2>
@@ -22,28 +22,22 @@
         {% endfor %}
       </ul>
     </div>
-{#    {% if order_page.has_previous_page %}#}
-{#    <div class="pagelist"><a title="Total record">&nbsp;<b>上一页</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;<a href="#">2</a>&nbsp;<a#}
-{#        href="#">下一页</a>&nbsp;<a href="#">尾页</a></div>#}
-{#     {% endif %}#}
+
         <div class="pagelist" title="Total record">
-                    {% if order_page.has_previous_page %}
-					<a href="{% url 'photo:photo' order_page.previous_page_number %}"><上一页</a>
+                    {% if photo_page.has_previous %}
+					<a href="{% url 'photo:photo' photo_page.previous_page_number %}"><上一页</a>
                     {% endif %}
                         {% for pindex in pages %}
-                            {% if pindex == order_page.number %}
+                            {% if pindex == photo_page.number %}
                                 <a href="{% url 'photo:photo' pindex %}" class="active">{{ pindex }}</a>
                             {% else %}
 					            <a href="{% url 'photo:photo' pindex %}">{{ pindex }}</a>
                             {% endif %}
                         {% endfor %}
-
-                    {% if order_page.has_next_page %}
-					<a href="{% url 'photo:photo' order_page.next_page_number %}">下一页></a>
+                    {% if photo_page.has_next %}
+					<a href="{% url 'photo:photo' photo_page.next_page_number %}">下一页></a>
                     {% endif %}
 				</div>
-
-
   </div>
 {% endblock body %}
 {% block bottomfiles %}

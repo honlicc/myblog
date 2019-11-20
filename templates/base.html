@@ -61,7 +61,7 @@
                 <ul>
                     <ul class="sub-nav">
                         {% for blog in blogs %}
-                            <li><a href="list.html">{{ blog.title }}</a></li>
+                                <li><a href="{% url 'home:info' blog.id %}">{{ blog.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </ul>

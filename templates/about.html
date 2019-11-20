@@ -9,31 +9,31 @@
     </h1>
     <div class="news_infos">
       <ul>
-        {{ user.desc| safe }}
+        {{ userinfo.desc| safe }}
         <br />
         <h2>About my blog</h2>
         <br />
-        <p>服务器：XXXXXXXXX
+        <p>服务器：阿里云
           <a href="#" target="_blank">
             <span style="color:#FF0000;">
               <strong>
-                XXXX咨询
+                联系邮箱：honlicc@163.com
               </strong>
             </span>
           </a>
         </p>
         <br />
-        <p>备案号：XXXXXXXX</p>
+        <p>备案号：京ICP备19037798号</p>
         <br />
-        <p>程 序：XXXXXXX</p>
+        <p>程 序：Django+Celery+Redis</p>
       </ul>
     </div>
     <div class="sidebar">
       <div class="about">
-        <p class="avatar"> <img src="{{ user.face.url }}" alt=""> </p>
-        <p class="abname">{{ user.nickname }}</p>
-        <p class="abposition">{{ user.job }}</p>
-        <p class="abtext">{{ user.info }}</p>
+        <p class="avatar"> <img src="{{ userinfo.face.url }}" alt=""> </p>
+        <p class="abname">{{ userinfo.nickname }}</p>
+        <p class="abposition">{{ userinfo.job }}</p>
+        <p class="abtext">{{ userinfo.info }}</p>
       </div>
     </div>
   </div>

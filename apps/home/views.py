@@ -13,8 +13,7 @@ class HomeView(View):
     def get(self, request):
         # 获取轮播图
         banners = IndexBanner.objects.all().order_by('index')
-        for i in banners:
-            print(i.type.type.id)
+
 
         # 获取所有文章
         blogs = Blog.objects.all().order_by('-create_time')
@@ -41,8 +40,7 @@ class HomeView(View):
 class RecordListView(View):
     def get(self, request):
         # 获取所有文章
-        blogs = Blog.objects.all()
-
+        blogs = Blog.objects.all().order_by('-create_time')
         # 所有日记类文章
         blog_rj = Blog.objects.filter(type=2).order_by('-create_time')
 
@@ -56,6 +54,7 @@ class RecordListView(View):
             'blog_rj': blog_rj,
             'blog_recommend': blog_recommend,
             'blog_read': blog_read,
+            'blogs': blogs,
         }
 
         return render(request, 'recordlist.html', content)
@@ -123,7 +122,7 @@ class ContentView(View):
             blogs = Blog.objects.filter(table=table).filter(status=1)
             table.blogs = blogs
 
-        print(blog.type)
+
 
         content = {
             'tables': tables,

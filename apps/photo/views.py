@@ -11,7 +11,7 @@ class PhotoView(View):
         photos = Photo.objects.all()
 
         # 分页
-        paginator = Paginator(photos, 1)
+        paginator = Paginator(photos, 3)
 
         # 获取第几页的内容
         try:
@@ -23,10 +23,11 @@ class PhotoView(View):
             page = 1
 
         # 获取第page页的Page实例对象
-        order_page = paginator.page(page)
+        photo_page = paginator.page(page)
 
         # 进行页码控制
         num_pages = paginator.num_pages
+
 
         if num_pages < 5:
             pages = range(1, num_pages + 1)
@@ -37,13 +38,12 @@ class PhotoView(View):
         else:
             pages = range(page - 2, page + 3)
 
-        print(len(order_page))
-        print(len(pages))
+
+
 
         content = {
-            'photos': photos,
             'pages': pages,
-            'order_page': order_page,
+            'photo_page': photo_page,
         }
 
         return render(request, 'photo.html', content)
