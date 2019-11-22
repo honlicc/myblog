@@ -4,7 +4,7 @@ from django.views.generic import View
 from user.models import User
 from home.models import BlogTag, BlogTable, IndexBanner, Blog, Comments
 from django.http import JsonResponse, HttpResponse
-from utils.mixin import LoginRequiredMixin
+
 
 
 # Create your views here.

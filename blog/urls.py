@@ -18,10 +18,10 @@ from django.contrib import admin
 
 
 urlpatterns = [
-    url(r'^', include('home.urls', namespace='home')),
     url(r'^user/', include('user.urls', namespace='user')),
     url(r'^photo/', include('photo.urls', namespace='photo')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^', include('home.urls', namespace='home')),
 ]

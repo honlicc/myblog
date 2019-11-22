@@ -24,9 +24,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'ad-$t2%up)==zp%)l=-xts@)x@s_=*p#0b1zb8!m&)^#&52353'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # django 认证系统使用的模型类
 AUTH_USER_MODEL = 'user.User'
@@ -133,7 +133,7 @@ EMAIL_FROM = 'Django<honlicc@163.com>'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.83.128:6379/9",
+        "LOCATION": "redis://172.26.126.78:6379/9",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -153,7 +153,7 @@ DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDSStorage'
 # 配置fdfs客户端配置文件路径
 FDFS_CLIENT_CONF = './utils/fdfs/client.conf'
 
-FDFS_URL = 'http://192.168.83.128:8888/'
+FDFS_URL = 'http://39.99.162.191/'
 
 # 富文本编辑器ckeditor配置
 CKEDITOR_CONFIGS = {

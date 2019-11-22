@@ -18,7 +18,7 @@ from django.contrib import admin
 from home.views import HomeView, ReleaseView, InfoView, RecordListView, CourseListView, ContentView, CommentView,TimeView,GbookView
 
 urlpatterns = [
-    url(r'^index/', HomeView.as_view(), name='index'),
+    url(r'^', HomeView.as_view(), name='index'),
     url(r'^release/', ReleaseView.as_view(), name='release'),
     url(r'^info/(?P<blog_id>\d+$)', InfoView.as_view(), name='info'),
     url(r'^recordlist/', RecordListView.as_view(), name='recordlist'),
