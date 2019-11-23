@@ -153,8 +153,8 @@ DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDSStorage'
 # 配置fdfs客户端配置文件路径
 FDFS_CLIENT_CONF = './utils/fdfs/client.conf'
 
-#FDFS_URL = 'http://39.99.162.191:8888/'
-FDFS_URL = 'http://192.168.83.128:8888/'
+FDFS_URL = 'http://39.99.162.191:8888/'
+
 
 # 富文本编辑器ckeditor配置
 CKEDITOR_CONFIGS = {
