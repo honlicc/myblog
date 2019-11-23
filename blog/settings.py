@@ -133,7 +133,7 @@ EMAIL_FROM = 'Django<honlicc@163.com>'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://172.26.126.78:6379/9",
+        "LOCATION": "redis://127.0.0.1:6379/9",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -153,7 +153,7 @@ DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDSStorage'
 # 配置fdfs客户端配置文件路径
 FDFS_CLIENT_CONF = './utils/fdfs/client.conf'
 
-FDFS_URL = 'http://39.99.162.191/'
+FDFS_URL = 'http://39.99.162.191:8888/'
 
 # 富文本编辑器ckeditor配置
 CKEDITOR_CONFIGS = {

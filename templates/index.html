@@ -31,12 +31,8 @@
         <!--banner end-->
         <div class="toppic">
             {% for blog in blog_top %}
-                {% if blog.table == None %}
-                    <li><a href="{% url 'home:info' blog.id %}" target="_blank"> <i><img src="{{ blog.tag.image.url }}"></i>
-                        {% else %}
-                    <li><a href="{% url 'home:content' blog.id %}" target="_blank">
-                    <i><img src="{{ blog.tag.image.url }}"></i>
-                {% endif %}
+                 <li><a href="{% url 'home:content' blog.id %}" target="_blank">
+                 <i><img src="{{ blog.tag.image.url }}"></i>
             <h2>{{ blog.title }}</h2>
             <span>{{ blog.tag }}</span>
             </a>
@@ -48,26 +44,25 @@
     <!--blogsbox begin-->
     <div class="blogsbox">
         {% for blog in blogs %}
+            {{ blog.type.id }}
             <div class="blogs" data-scroll-reveal="enter bottom over 1s">
-                {% if blog.table == None %}
+                {% if blog.type.id == 2 %}
                     <h3 class="blogtitle"><a href="{% url 'home:info' blog.id %}" target="_blank">{{ blog.title }} </a>
                     </h3>
+                    <span class="blogpic"><a href="{% url 'home:info' blog.id %}" title=""><img
+                            src="{{ blog.iamge.url }}" alt=""></a></span>
                 {% else %}
                     <h3 class="blogtitle"><a href="{% url 'home:content' blog.id %}"
                                              target="_blank">{{ blog.title }} </a></h3>
+                    <span class="blogpic"><a href="{% url 'home:content' blog.id %}" title=""><img
+                            src="{{ blog.tag.image.url }}" alt=""></a></span>
                 {% endif %}
 
-                {% if blog.type.id == 1 %}
-                    <span class="blogpic"><a href="{% url 'home:info' blog.id %}" title=""><img
-                            src="{{ blog.tag.image.url }}" alt=""></a></span>
-                {% else %}
-                    <span class="blogpic"><a href="{% url 'home:info' blog.id %}" title=""><img
-                            src="{{ blog.iamge.url }}" alt=""></a></span>
-                {% endif %}
+
                 <p class="blogtext">{{ blog.detail|striptags|safe }}</p>
                 <div class="bloginfo">
                     <ul>
-                        {% if blog.table == None %}
+                        {% if blog.type.id == 2 %}
                             <li class="author"><a href="{% url 'home:info' blog.id %}">{{ blog.user }}</a></li>
                         {% else %}
                             <li class="author"><a href="{% url 'home:content' blog.id %}">{{ blog.user }}</a></li>

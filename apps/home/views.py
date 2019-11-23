@@ -113,6 +113,8 @@ class ContentView(View):
     def get(self, request, blog_id):
         try:
             blog = Blog.objects.get(id=blog_id)
+            blog.read += 1
+            blog.save()
         except Blog.DoesNotExist:
             return redirect(reverse('home:index'))
 
@@ -141,19 +143,19 @@ class ReleaseView(View):
 class CommentView(View):
     def post(self, request):
         user = request.user
-        blog_id = int(request.POST.get('blog_id'))
-        detail = request.POST.get('comment')
-        try:
-            user = User.objects.get(id=user.id)
-        except User.DoesNotExist:
-            return JsonResponse({"res": 0, "msg": "用户信息异常"})
-
-        try:
-            blog = Blog.objects.get(id=blog_id)
-        except User.DoesNotExist:
-            return JsonResponse({"res": 3, "msg": "文章信息异常"})
-
         if user.is_authenticated():
+            blog_id = int(request.POST.get('blog_id'))
+            detail = request.POST.get('comment')
+            try:
+                user = User.objects.get(id=user.id)
+            except User.DoesNotExist:
+                return JsonResponse({"res": 0, "msg": "用户信息异常"})
+
+            try:
+                blog = Blog.objects.get(id=blog_id)
+            except User.DoesNotExist:
+                return JsonResponse({"res": 3, "msg": "文章信息异常"})
+
             comments = Comments.objects.create(user=user, blog=blog, detail=detail)
 
             return JsonResponse({"res": 1, "msg": "评论成功"})
