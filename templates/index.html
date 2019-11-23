@@ -44,7 +44,7 @@
     <!--blogsbox begin-->
     <div class="blogsbox">
         {% for blog in blogs %}
-            {{ blog.type.id }}
+
             <div class="blogs" data-scroll-reveal="enter bottom over 1s">
                 {% if blog.type.id == 2 %}
                     <h3 class="blogtitle"><a href="{% url 'home:info' blog.id %}" target="_blank">{{ blog.title }} </a>
