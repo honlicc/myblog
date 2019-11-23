@@ -144,11 +144,17 @@ class AboutView(View):
     def get(self, request):
         nickname = '宏利'
         # 获取用户信息,返回查询集
+        user=request.user
         userinfo = UserInfo.objects.filter(nickname=nickname).first()
-        user=User.objects.filter(id=userinfo.user.id).first()
-        content={
-            "userinfo": userinfo,
-            "user": user,
-        }
-    
-        return render(request, 'about.html', content)
+        if user.is_authenticated():
+
+            user=User.objects.filter(id=userinfo.user.id).first()
+            content={
+                "userinfo": userinfo,
+                "user": user,
+            }
+
+            return render(request, 'about.html', content)
+        else:
+            print(userinfo.face.url)
+            return render(request, 'about.html',{"userinfo":userinfo})
