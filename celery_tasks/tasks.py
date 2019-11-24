@@ -13,7 +13,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "blog.settings")
 django.setup()
 
 
-app = Celery('celery_tasks.tasks', broker='redis://192.168.83.128:6379/8')
+app = Celery('celery_tasks.tasks', broker='redis://127.0.0.1:6379/8')
 
 #celery + redis 异步发送邮件
 @app.task
