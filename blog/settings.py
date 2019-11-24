@@ -120,7 +120,9 @@ STATICFILES_DIRS = (
 # 邮件配置
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.163.com'
-EMAIL_PORT = 25
+#EMAIL_PORT = 25  阿里云默认25端口封禁，可以使用465端口，同时ssl加密
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
 # 发送邮件的邮箱
 EMAIL_HOST_USER = 'honlicc@163.com'
 # 在邮箱中设置的客户端授权密码
